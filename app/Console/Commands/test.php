@@ -40,6 +40,10 @@ class test extends Command
     {
         $name = $this->ask("what your name?");
         $secret = $this->secret("what is the password?");
-        Log::info($name . $secret);
+        if ($name === 'test' && $secret === 'secret') {
+            Log::info('name:' . $name . ",secret:" . $secret);
+        } else {
+            $this->error('error!');
+        }
     }
 }
