@@ -16,3 +16,8 @@ use Illuminate\Foundation\Inspiring;
 Artisan::command('inspire', function () {
     $this->comment(Inspiring::quote());
 })->describe('Display an inspiring quote');
+
+Artisan::command('broadcast', function () {
+    broadcast(new App\Events\Test("BIG NEWS!"));
+    $this->comment("sent");
+})->describe('test broadcast');

@@ -14,7 +14,3 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('users/{id}', function ($id) {
-    return response()->json(event(new App\Events\Test(App\Models\User::find($id))));
-});

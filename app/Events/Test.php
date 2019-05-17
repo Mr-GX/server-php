@@ -9,20 +9,19 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
-use App\Models\User;
 
 class Test implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
-    public $user;
+    public $msg;
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct(User $user)
+    public function __construct($msg)
     {
-        $this->user = $user;
+        $this->msg = $msg;
     }
 
     /**
@@ -32,6 +31,6 @@ class Test implements ShouldBroadcast
      */
     public function broadcastOn()
     {
-        return new PrivateChannel('broadcast.user.'.$this->user->id);
+        return new Channel('broadcast.test');
     }
 }
